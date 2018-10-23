@@ -37,6 +37,19 @@ player2 = Player("John", 3, 3)
 ship1 = Ships(random.randint(0, 5), random.randint(0, 5))
 ship2 = Ships(random.randint(0, 5), random.randint(0, 5))
 
+if player1.guess_col == player2.guess_col:
+    print("Test")
+
+print(ship1.ship_col)
+
 print("Hello and welcome to battleships!")
+
+hit_count= 0
+
+for turn in range(4):
+    player1.guess_row = int(input("Guess Row"))
+    player1.guess_col = int(input("Guess Col"))
+
+    #if (player1.guess_col == ship1.gu)
 
 
