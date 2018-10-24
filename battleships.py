@@ -1,19 +1,17 @@
 import random
 
-
 class Board:
+    boardArray = []
+    for x in range(0, 5):
+        boardArray.append(["o"] * 5)
 
-    board = []
-    for x in range(0,5):
-        board.append(["o"] * 5)
-
-    def print_board(board):
-        for row in board:
+    def print_board(self, boardArray):
+        for row in boardArray:
             print(" ".join(row))
-    print_board(board)
 
-newBoard = Board()
 
+player1Board = Board()
+player2Board = Board()
 
 class Player:
 
@@ -24,32 +22,55 @@ class Player:
 
 
 class Ships:
-    ship_row = random.randint(0, 5)
-    ship_col = random.randint(0, 5)
-
     def __init__(self, ship_row, ship_col):
         self.ship_row = ship_row
         self.ship_col = ship_col
 
+def player1_turn():
+    for turn in range(4):
+        player1.guess_row = int(input("Guess Row"))
+        player1.guess_col = int(input("Guess Col"))
 
-player1 = Player("Nazim", 3, 3)
-player2 = Player("John", 3, 3)
-ship1 = Ships(random.randint(0, 5), random.randint(0, 5))
-ship2 = Ships(random.randint(0, 5), random.randint(0, 5))
+        if (player1.guess_col == Ships.ship_col and player1.guess_row == Ships.ship_row):
+            print("Congratulations! You sunk my battleship")
+            break
+        if (player1.guess_col == Ships.ship_col and player1.guess_row == Ships.ship_row):
+            print("Congratulations! You sunk my battleship")
+            break
+        else:
+            print("You missed my battleship")
+            player2Board.boardArray[player1.guess_row][player1.guess_col] = ("X")
 
-if player1.guess_col == player2.guess_col:
-    print("Test")
+        print("Turn " + str(turn + 1) + " out of 4.")
+        player2Board.print_board(player2Board.boardArray)
 
-print(ship1.ship_col)
+        if turn >= 3:
+            print("Game over")
+            break
+
+
+
+player1 = Player("Nazim", 0, 0)
+player2 = Player("Tom", 0, 0)
+
+
+player1_patrol1 = Ships(random.randint(0, len(player2Board.boardArray) - 1), random.randint(0, len(player2Board.boardArray) - 1))
+player1_patrol2 = Ships(random.randint(0, len(player2Board.boardArray) - 1), random.randint(0, len(player2Board.boardArray) - 1))
+player1_battle1 = Ships(random.randint(0, len(player2Board.boardArray) - 1), random.randint(0, len(player2Board.boardArray) - 1))
+player1_battle2 = Ships(random.randint(0, len(player2Board.boardArray) - 1), random.randint(0, len(player2Board.boardArray) - 1))
+player1_sub1 = Ships(random.randint(0, len(player2Board.boardArray) - 1), random.randint(0, len(player2Board.boardArray) - 1))
+player1_destroyer1 = Ships(random.randint(0, len(player2Board.boardArray) - 1), random.randint(0, len(player2Board.boardArray) - 1))
+player1_carrier1 = Ships(random.randint(0, len(player2Board.boardArray) - 1), random.randint(0, len(player2Board.boardArray) - 1))
 
 print("Hello and welcome to battleships!")
 
-hit_count= 0
+player1_turn()
 
-for turn in range(4):
-    player1.guess_row = int(input("Guess Row"))
-    player1.guess_col = int(input("Guess Col"))
 
-    #if (player1.guess_col == ship1.gu)
+
+
+
+
+
 
 
